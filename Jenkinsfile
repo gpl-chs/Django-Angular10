@@ -26,7 +26,8 @@ pipeline {
                     // Log in to DockerHub using credentials
                     withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD']]) {
                         dir('Angular10') {
-                            sh "docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD"
+                            // Use --password-stdin to avoid insecure password passing
+                            sh "echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin"
 
                             // Push the Docker image to DockerHub
                             sh 'docker push gplcs/Angular10'
