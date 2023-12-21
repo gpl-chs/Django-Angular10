@@ -30,7 +30,7 @@ pipeline {
                             sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
 
                             // Push the Docker image to DockerHub
-                            sh 'docker push gplchs/Angular10'
+                            sh 'docker push angular10-app'
                         }
                     }
                 }
