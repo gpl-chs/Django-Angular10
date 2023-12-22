@@ -18,7 +18,9 @@ pipeline {
                         sh 'docker tag angular10 gplchsdoc/angular10-app:latest'
                     }
                       dir('Django') {
+                        sh 'ls'
                         sh 'cd DjangoAPI'
+                        sh 'ls'
                         sh 'docker build -t django .'
                         sh 'docker tag angular10 gplchsdoc/django-app:latest'
                     }
