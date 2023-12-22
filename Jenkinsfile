@@ -37,7 +37,9 @@ pipeline {
                             // Push the Docker image to DockerHub
                             sh 'docker push gplchsdoc/django-app:latest'
                         }                        
-                        dir('Angular10') {                            
+                        dir('Angular10') { 
+                             // Use --password-stdin to avoid insecure password passing
+                            //sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
                             // Push the Docker image to DockerHub
                             sh 'docker push gplchsdoc/angular10-app:latest'
                         }                        
