@@ -35,11 +35,14 @@ pipeline {
                             
                             // Use --password-stdin to avoid insecure password passing
                             sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
-
                             // Push the Docker image to DockerHub
                             sh 'docker push gplchsdoc/angular10-app:latest'
+                        }
+                        dir('Django/DjangoAPI') {                            
+                            // Use --password-stdin to avoid insecure password passing
+                            //sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
+                            // Push the Docker image to DockerHub
                             sh 'docker push gplchsdoc/django-app:latest'
-
                         }
                     }
                 }
