@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Checkout your source code
+                    // Checkout your source codE
                     checkout scm
 
                     // Build the Docker image
@@ -39,7 +39,7 @@ pipeline {
                         }                        
                         dir('Angular10') { 
                              // Use --password-stdin to avoid insecure password passing
-                            //sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
+                            sh 'echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin'
                             // Push the Docker image to DockerHub
                             sh 'docker push gplchsdoc/angular10-app:latest'
                         }                        
